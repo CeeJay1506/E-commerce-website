@@ -246,3 +246,42 @@ button[type="submit"]:hover,
     opacity: 0;
   }
 }
+
+/* Existing styles */
+
+/* Add responsiveness */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-text,
+  .about-image {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  form {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  #cart-table th,
+  #cart-table td {
+    font-size: 0.8rem;
+  }
+
+  footer {
+    text-align: center;
+  }
+}
