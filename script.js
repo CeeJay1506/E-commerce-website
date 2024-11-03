@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const popup = document.getElementById("popup");
   const floatingCart = document.getElementById("floating-cart");
   const backToTopButton = document.getElementById("back-to-top");
+  const cartCount = document.getElementById("cart-count");
+  const cartModal = document.getElementById("cart-modal");
+  const closeModal = document.getElementById("close-modal");
   let cart = [];
 
   cartButtons.forEach((button) => {
@@ -36,10 +39,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateCart() {
     cartTableBody.innerHTML = "";
     let total = 0;
+    let itemCount = 0;
 
     cart.forEach((item, index) => {
       const itemTotal = item.amount * item.price;
       total += itemTotal;
+      itemCount += item.amount;
       const row = document.createElement("tr");
       row.innerHTML = `
                 <td>${item.name}</td>
@@ -52,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+    cartCount.textContent = itemCount;
     addRemoveListeners();
   }
 
@@ -75,28 +81,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 3000);
   }
 
-  checkoutButton.addEventListener("click", () => {
-    cartSection.style.display = "none";
-    paymentSection.style.display = "block";
-  });
-
-  homeLink.addEventListener("click", () => {
-    cartSection.style.display = "block";
-    paymentSection.style.display = "none";
-  });
-
-  productsLink.addEventListener("click", () => {
-    cartSection.style.display = "block";
-    paymentSection.style.display = "none";
-  });
-
-  cartLink.addEventListener("click", () => {
-    cartSection.style.display = "block";
-    paymentSection.style.display = "none";
-  });
-
   floatingCart.addEventListener("click", () => {
-    cartSection.scrollIntoView({ behavior: "smooth" });
+    cartModal.style.display = "block";
+  });
+
+  closeModal.addEventListener("click", () => {
+    cartModal.style.display = "none";
   });
 
   window.addEventListener("scroll", () => {
@@ -109,6 +99,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   backToTopButton.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  checkoutButton.addEventListener("click", () => {
+    cartModal.style.display = "none";
+    paymentSection.style.display = "block";
   });
 
   const paymentForm = document.getElementById("payment-form");
