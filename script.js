@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const cartLink = document.querySelector('a[href="#cart"]');
   const popup = document.getElementById("popup");
   const floatingCart = document.getElementById("floating-cart");
+  const backToTopButton = document.getElementById("back-to-top");
   let cart = [];
 
   cartButtons.forEach((button) => {
@@ -95,8 +96,19 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   floatingCart.addEventListener("click", () => {
-    console.log("Floating cart icon clicked"); // Log to console
     cartSection.scrollIntoView({ behavior: "smooth" });
+  });
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 200) {
+      backToTopButton.classList.add("show");
+    } else {
+      backToTopButton.classList.remove("show");
+    }
+  });
+
+  backToTopButton.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
   const paymentForm = document.getElementById("payment-form");

@@ -327,10 +327,15 @@ img {
 }
 .product p {
   flex-grow: 1;
+  margin: 0.5rem 0 1rem 0;
+}
+
+.product h3 {
+  margin: 0.5rem 0;
 }
 
 .product button {
-  margin: 1rem auto 0 auto; /* Ensures the button is at the bottom of the card */
+  margin: 0.5rem auto; /* Ensures the button is at the bottom of the card */
   background-color: #6a1b9a; /* Purple */
   color: #fff;
   border: none;
@@ -359,5 +364,30 @@ img {
 }
 
 .floating-cart:hover {
+  transform: scale(1.1);
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 70px; /* Adjust to move the arrow left of the floating cart */
+  background-color: #6a1b9a; /* Purple */
+  color: #fff;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.3s, opacity 0.3s;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
   transform: scale(1.1);
 }
