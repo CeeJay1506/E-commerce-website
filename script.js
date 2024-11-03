@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const productsLink = document.querySelector('a[href="#products"]');
   const cartLink = document.querySelector('a[href="#cart"]');
   const popup = document.getElementById("popup");
+  const floatingCart = document.getElementById("floating-cart");
   let cart = [];
 
   cartButtons.forEach((button) => {
@@ -91,6 +92,11 @@ document.addEventListener("DOMContentLoaded", () => {
   cartLink.addEventListener("click", () => {
     cartSection.style.display = "block";
     paymentSection.style.display = "none";
+  });
+
+  floatingCart.addEventListener("click", () => {
+    console.log("Floating cart icon clicked"); // Log to console
+    cartSection.scrollIntoView({ behavior: "smooth" });
   });
 
   const paymentForm = document.getElementById("payment-form");
